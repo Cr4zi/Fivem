@@ -4,8 +4,8 @@ use serde_json::Value as JsonValue;
 
 pub struct Server<'a> {
     hostname: &'a String,
-    clients: &'a u8,
-    max_clients: &'a u8,
+    clients: &'a String,
+    max_clients: &'a String,
     map_name: &'a String,
     game_type: &'a String
 }
