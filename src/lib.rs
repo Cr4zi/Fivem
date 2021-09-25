@@ -3,16 +3,23 @@
 extern crate reqwest;
 extern crate serde_json;
 
+use reqwest::Response;
 use serde_json::Value as JsonValue;
 
 mod player;
 mod server;
 
 fn _fetch_json(url: &String) -> JsonValue {
-    match reqwest::get(&url) {
+    match reqwest::get(url) {
         Ok(mut res) => {
-           let json = serde_json::from_str(&res.text()); 
-           return json
+            match res.text() {
+                Ok(text) =>{
+                    let json = serde_json::from_str(&text); 
+                    return json
+                },
+                Err(e) => println!("{}", e)
+            }
+            
         }, 
         Err(e) => println!("{}", e)
     }
