@@ -2,7 +2,7 @@ extern crate serde_json;
 
 use serde_json::Value as JsonValue;
 
-struct Server {
+pub struct Server {
     hostname: &String,
     clients: &u8,
     max_clients: &u8,
@@ -16,7 +16,7 @@ impl ToString for Server {
     }
 }
 
-pub fn parse_server_data(data: JsonValue) -> Server {
+pub fn parse_server_data(data: &JsonValue) -> Server {
     let hostname = data["hostname"];
     let clients = data["clients"];
     let max_clients = data["sv_maxclients"];

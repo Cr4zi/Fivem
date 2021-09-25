@@ -24,7 +24,7 @@ fn parse_identifier(identifier: String) -> Vec<String> {
     return vec![&service, &id]
 }
 
-fn parse_players_json(data: &JsonValue) -> Vec<String> {
+pub fn parse_players_json(data: &JsonValue) -> Vec<String> {
     let mut players: Vec<Player> =  Vec::new();
 
     for p in &data.iter() {
